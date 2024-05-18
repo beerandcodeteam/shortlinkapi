@@ -16,5 +16,5 @@ Route::post('/shortlink', [\App\Http\Controllers\ShortlinkController::class, 'st
     ->name('shortlink.store');
 
 
-Route::get('/static', [\App\Http\Controllers\ShortlinkController::class, 'store'])
+Route::get('/static', [\App\Http\Controllers\ShortlinkController::class, 'static'])
     ->name('shortlink.static');
