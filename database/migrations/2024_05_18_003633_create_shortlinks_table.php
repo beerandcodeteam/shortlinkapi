@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('url');
             $table->string('name', 30)->unique();
-            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }

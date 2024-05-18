@@ -7,6 +7,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('{url}', [\App\Http\Controllers\ShortLinkController::class, 'show'])
-    ->middleware(['api','guest'])
+Route::get('/{name}', [\App\Http\Controllers\ShortlinkController::class, 'show'])
+    ->middleware('guest')
     ->name('shortlink.show');
