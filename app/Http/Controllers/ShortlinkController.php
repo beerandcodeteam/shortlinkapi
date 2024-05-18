@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class ShortlinkController extends Controller
 {
+
+    public function static()
+    {
+        return "ok";
+    }
+
     public function store(Request $request)
     {
         $request->validate([
