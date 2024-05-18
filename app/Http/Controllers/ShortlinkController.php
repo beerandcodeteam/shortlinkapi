@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Shortlink;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ShortlinkController extends Controller
 {
@@ -27,8 +28,9 @@ class ShortlinkController extends Controller
 
     public function show($shortlink)
     {
-        $shortlink = Shortlink::where('name', $shortlink)->firstOrFail();
-
+        $shortlink = Cache::rememberForever($shortlink, function () use ($shortlink) {
+            return Shortlink::where('name', $shortlink)->firstOrFail();
+        });
         return redirect($shortlink->url);
     }
 }
