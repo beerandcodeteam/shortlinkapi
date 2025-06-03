@@ -11,9 +11,11 @@ Route::post('/login', [\App\Http\Controllers\LoginController::class, 'login'])
     ->middleware('guest')
     ->name('login');
 
-Route::post('/shortlink', [\App\Http\Controllers\ShortlinkController::class, 'store'])
-    ->middleware('auth:sanctum')
-    ->name('shortlink.store');
+Route::get('/{name}', [\App\Http\Controllers\ShortlinkController::class, 'show'])
+    ->name('shortlink.show');
+
+Route::get('/{name}/no-cache', [\App\Http\Controllers\ShortlinkController::class, 'showLink'])
+    ->name('shortlink.nocache');
 
 
 Route::get('/static', [\App\Http\Controllers\ShortlinkController::class, 'static'])

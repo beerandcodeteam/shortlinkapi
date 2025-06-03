@@ -31,6 +31,11 @@ class ShortlinkController extends Controller
         $shortlink = Cache::rememberForever($shortlink, function () use ($shortlink) {
             return Shortlink::where('name', $shortlink)->firstOrFail();
         });
-        return redirect($shortlink->url);
+        return $shortlink;
+    }
+
+    public function showLink($shortlink)
+    {
+        return Shortlink::where('name', $shortlink)->firstOrFail();
     }
 }
